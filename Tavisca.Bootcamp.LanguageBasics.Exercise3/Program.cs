@@ -47,11 +47,11 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
                 totalCalories[index] = (protein[index]*5) + (carbs[index] *5) + (fat[index]*9);
             }
             for (int index = 0; index < dietPlans.Length; index++){
-                selctedMenu[index] = getMenuItem(dietPlans[index],protein,carbs,fat,totalCalories);
+                selctedMenu[index] = GetMenuItem(dietPlans[index],protein,carbs,fat,totalCalories);
             }
             return selctedMenu;
         }
-        public static int getMenuItem(string dietPlan,int[] protein, int[] carbs, int[] fat,int[] totalCalories){
+        public static int GetMenuItem(string dietPlan,int[] protein, int[] carbs, int[] fat,int[] totalCalories){
             List<int> menuItems = new List<int>();
             for (int index = 0; index < protein.Length; index++){
                 menuItems.Add(index);
@@ -60,34 +60,34 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
                 switch(c)
                 {
                     case 'P':
-                        menuItems = getIndex(protein, menuItems, getMaxNum(protein, menuItems));
+                        menuItems = GetIndex(protein, menuItems, GetMaxNum(protein, menuItems));
                         break;
                     case 'p':
-                        menuItems = getIndex(protein, menuItems, getMinNum(protein, menuItems));
+                        menuItems = GetIndex(protein, menuItems, GetMinNum(protein, menuItems));
                         break;
                     case 'C':
-                        menuItems = getIndex(carbs, menuItems, getMaxNum(carbs, menuItems));
+                        menuItems = GetIndex(carbs, menuItems, GetMaxNum(carbs, menuItems));
                         break;
                     case 'c':
-                        menuItems = getIndex(carbs, menuItems, getMinNum(carbs, menuItems));
+                        menuItems = GetIndex(carbs, menuItems, GetMinNum(carbs, menuItems));
                         break;
                     case 'F':
-                        menuItems = getIndex(fat, menuItems, getMaxNum(fat, menuItems));
+                        menuItems = GetIndex(fat, menuItems, GetMaxNum(fat, menuItems));
                         break;
                     case 'f':
-                        menuItems = getIndex(fat, menuItems, getMinNum(fat, menuItems));
+                        menuItems = GetIndex(fat, menuItems, GetMinNum(fat, menuItems));
                         break;
                     case 'T':
-                        menuItems = getIndex(fat, menuItems, getMinNum(fat, menuItems));
+                        menuItems = GetIndex(fat, menuItems, GetMinNum(fat, menuItems));
                         break;
                     case 't':
-                        menuItems = getIndex(totalCalories, menuItems, getMinNum(totalCalories, menuItems));
+                        menuItems = GetIndex(totalCalories, menuItems, GetMinNum(totalCalories, menuItems));
                         break;
                 }
             }
             return menuItems[0];
         }
-        public static List<int> getIndex(int[] dietItems, List<int> tempMenuItems, int selctedIndex) {
+        public static List<int> GetIndex(int[] dietItems, List<int> tempMenuItems, int selctedIndex) {
             List<int> menuItems = new List<int>();
             foreach (var menuItem in tempMenuItems) {
                 if (dietItems[menuItem] == selctedIndex){
@@ -96,7 +96,7 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
             }
             return menuItems;
         }
-        public static int getMaxNum(int[] dietItems, List<int> menuItems) {
+        public static int GetMaxNum(int[] dietItems, List<int> menuItems) {
             int maxNumber = dietItems[menuItems[0]];
             for (int index = 1; index < menuItems.Count; index++) {
                 if (dietItems[menuItems[index]] > maxNumber){
@@ -105,7 +105,7 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
             }
             return maxNumber;
         }
-        public static int getMinNum(int[] dietItems, List<int> menuItems) {
+        public static int GetMinNum(int[] dietItems, List<int> menuItems) {
             int minNumber = dietItems[menuItems[0]];
             for (int index = 1; index < menuItems.Count; index++) {
                 if (dietItems[menuItems[index]] < minNumber){
